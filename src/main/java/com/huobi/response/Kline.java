@@ -13,9 +13,9 @@ public class Kline {
     private double amount;
     private int count;
     private double open;
-    private int close;
-    private int low;
-    private int high;
+    private double close;
+    private double low;
+    private double high;
     private double vol;
 
     public long getId() {
