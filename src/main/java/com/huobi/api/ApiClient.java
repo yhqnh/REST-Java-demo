@@ -2,6 +2,8 @@ package com.huobi.api;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -84,9 +86,10 @@ public class ApiClient {
     static final int READ_TIMEOUT = 5;
     static final int WRITE_TIMEOUT = 5;
 
-    static final String API_HOST = "api.huobi.pro";
 
-    static final String API_URL = "https://" + API_HOST;
+    static final String API_URL = "https://api.huobi.pro";
+    static final String API_HOST = getHost();
+    
     static final MediaType JSON = MediaType.parse("application/json");
     static final OkHttpClient client = createOkHttpClient();
 
@@ -382,27 +385,10 @@ public class ApiClient {
         HashMap map = new HashMap();
         map.put("symbol", req.symbol);
         map.put("states", req.states);
-        if (req.startDate!=null) {
-           map.put("startDate",req.startDate);
-		}
-        if (req.startDate!=null) {
-            map.put("start-date",req.startDate);
- 		}
-        if (req.endDate!=null) {
-            map.put("end-date",req.endDate);
- 		}
-        if (req.types!=null) {
-            map.put("types",req.types);
- 		}
-        if (req.from!=null) {
-            map.put("from",req.from);
- 		}
-        if (req.direct!=null) {
-            map.put("direct",req.direct);
- 		}
-        if (req.size!=null) {
-            map.put("size",req.size);
- 		}
+//    map.put("symbol",symbol);
+//    map.put("symbol",symbol);
+//    map.put("symbol",symbol);
+//    map.put("symbol",symbol);
 
         IntrustDetailResponse resp = get("/v1/order/orders/", map, new TypeReference<IntrustDetailResponse<List<IntrustDetail>>>() {
         });
@@ -483,6 +469,17 @@ public class ApiClient {
         return new Builder().connectTimeout(CONN_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS).writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .build();
+    }
+    
+    static String getHost() {
+        String host = null;
+        try {
+            host = new  URL(API_URL).getHost();
+        } catch (MalformedURLException e) {
+            System.err.println("parse API_URL error,system exit!,please check API_URL:" + API_URL ); 
+            System.exit(0);
+        }
+        return host;
     }
 
 }
