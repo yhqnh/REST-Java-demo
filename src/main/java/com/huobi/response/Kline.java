@@ -50,7 +50,7 @@ public class Kline {
         this.open = open;
     }
 
-    public int getClose() {
+    public double getClose() {
         return close;
     }
 
@@ -58,7 +58,7 @@ public class Kline {
         this.close = close;
     }
 
-    public int getLow() {
+    public double getLow() {
         return low;
     }
 
@@ -66,7 +66,7 @@ public class Kline {
         this.low = low;
     }
 
-    public int getHigh() {
+    public double getHigh() {
         return high;
     }
 
