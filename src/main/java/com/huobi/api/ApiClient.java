@@ -147,15 +147,18 @@ public class ApiClient {
     }
 
     /**
-     * 创建订单（未执行)
+     * 创建订单
      *
      * @param request CreateOrderRequest object.
      * @return Order id.
      */
     public Long createOrder(CreateOrderRequest request) {
+//        ApiResponse<Long> resp =
+//                post("/v1/order/orders", request, new TypeReference<ApiResponse<Long>>() {
+//                });
         ApiResponse<Long> resp =
-                post("/v1/order/orders", request, new TypeReference<ApiResponse<Long>>() {
-                });
+                        post("/v1/order/orders/place", request, new TypeReference<ApiResponse<Long>>() {
+                        });
         return resp.checkAndReturn();
     }
 
