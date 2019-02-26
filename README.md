@@ -11,7 +11,7 @@ String secret_key = ""; // huobi申请的secretKey
 <dependency>
     <groupId>com.lenovo.eservice</groupId>
     <artifactId>microservice-types</artifactId>
-<version>${VERSION}</version>
+    <version>${VERSION}</version>
 </dependency>
 ```
 * gradle  
