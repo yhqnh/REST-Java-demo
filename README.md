@@ -9,10 +9,12 @@ String secret_key = ""; // huobi申请的secretKey
 * maven
 ```
 <dependency>
-	<groupId>com.lenovo.eservice</groupId>
-	<artifactId>microservice-types</artifactId>
-	<version>${VERSION}</version>
+    <groupId>com.lenovo.eservice</groupId>
+    <artifactId>microservice-types</artifactId>
+<version>${VERSION}</version>
 </dependency>
+```
 * gradle  
+```
 dependency group: "com.lenovo.eservice", name:"microservice-types", version: "${VERSION}"
 ```
